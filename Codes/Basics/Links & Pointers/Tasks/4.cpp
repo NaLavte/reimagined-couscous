@@ -2,30 +2,56 @@
 
 using namespace std;
 
-int main()
-{
-	setlocale(LC_ALL, "RU");
+double add(double* a, double* b) {
+  return *a + *b;
+}
 
-	int num1;
-	int num2;
-	int action;
-	int result;
-	int* ptrRes = &result;
-	int* ptrAct = &action;
-	int* ptr1 = &num1;
-	int* ptr2 = &num2;
+double subtract(double* a, double* b) {
+  return *a - *b;
+}
 
-	cout << "Введите первое число: ";
-	cin >> *ptr1;
+double multiply(double* a, double* b) {
+  return *a - *b;
+}
 
-	cout << endl << "Введите второе число: ";
-	cin >> *ptr2;
+double divide(double* a, double* b) {
+  return *a / *b;
+}
 
-	cout << "Что вы хотите сделать с этими числами:\n1. +\n2. -\n3. *\n4. /" << endl;
-	cin >> *ptrAct;
+int main() {
 
-	if (*ptrAct == 1) { cout << endl << *ptr1 + *ptr2; }
-	else if (*ptrAct == 2) { cout << endl << "Ответ: " << *ptr1 - *ptr2; }
-	else if (*ptrAct == 3) { cout << endl << "Ответ: " << *ptr1 * *ptr2; }
-	else if (*ptrAct == 3) { cout << endl << "Ответ: " << *ptr1 / *ptr2; }
+    setlocale(LC_ALL, "RU");
+
+    double a;
+    double b;
+    char operation;
+
+    cout << "Enter two numbers and operation: ";
+    cin >> a >> operation >> b;
+
+    double* ptrA = &a;
+    double* ptrB = &b;
+
+    double result = 0;
+
+    switch (operation) {
+    case '+':
+        result = add(ptrA, ptrB);
+        break;
+    case '-':
+        result = subtract(ptrA, ptrB);
+        break;
+    case '*':
+        result = multiply(ptrA, ptrB);
+        break;
+    case '/':
+        if (*ptrB != 0) result = divide(ptrA, ptrB);
+        else cout << "DivideByZeroException";
+        break;
+    default:
+        cout << "Error";
+        return 1;
+    }
+    cout << "Result: " << result;
+    return 0;
 }
