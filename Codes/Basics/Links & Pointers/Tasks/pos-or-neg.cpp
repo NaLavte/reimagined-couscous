@@ -13,5 +13,5 @@ int main()
 
 	int* ptrA = &a;
 
-	cout << (*ptrA > 0 ? "+" : (*ptr < 0 ? "-" : "zero"));
+	cout << (*ptrA > 0 ? "+" : (*ptrA < 0 ? "-" : "zero"));
 }
